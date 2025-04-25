@@ -1,0 +1,178 @@
+{
+  "site": {
+    "title": "Fotso Fotso Mossi Bonito | Full-Stack Developer",
+    "description": "Full-stack developer specializing in Flutter, React, TypeScript and Django"
+  },
+  "nav": {
+    "title": "Navigation",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Fotso Fotso Mossi Bonito",
+    "title": "Full-Stack Developer",
+    "subtitle": "Specialized in Flutter, React, TypeScript and Django",
+    "scrollDown": "Explore",
+    "switchMode": "Change mode",
+    "cta": {
+      "projects": "View My Projects",
+      "contact": "Get In Touch"
+    },
+    "terminalAbout": "Full-stack developer passionate about creating innovative digital solutions. Specializing in React, Flutter, and Django with over 3 years of professional experience.",
+    "interactive": {
+      "title": "What would you like to discover?",
+      "viewProjects": "View Projects",
+      "projectsDesc": "Discover my recent work",
+      "skills": "Technical Skills",
+      "skillsDesc": "Technologies and methodologies I master",
+      "about": "About Me",
+      "aboutDesc": "My journey and professional story",
+      "contact": "Let's Talk",
+      "contactDesc": "How to reach me for collaborations"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me",
+    "intro": "I am a passionate full-stack developer with expertise in web and mobile development. I love creating efficient, user-friendly solutions that solve real-world problems.",
+    "background": "My journey in technology began with my studies in Industrial Computing and Automation at EST La Salle, followed by a Bachelor's degree in Software Engineering at IUT Douala. With experience across multiple domains including network management, access control systems, and web/mobile development, I bring a versatile perspective to every project.",
+    "philosophy": "I believe in writing clean, maintainable code while staying at the forefront of technological advancements.",
+    "conclusion": "My goal is to leverage technology to build innovative solutions that make a positive impact.",
+    "personal_quote": "Technology should simplify life, not complicate it. I strive to create solutions that make a real difference.",
+    "profile_alt": "Photo of Fotso Fotso Mossi Bonito",
+    "journey": {
+      "education": "Educational Journey",
+      "professional": "Professional Philosophy"
+    },
+    "metrics": {
+      "years": "Years Experience",
+      "projects": "Projects Completed",
+      "clients": "Happy Clients"
+    },
+    "values": {
+      "title": "My Values",
+      "continuous_learning": "Continuous Learning",
+      "continuous_learning_desc": "Constantly expanding my knowledge and skills to stay at the cutting edge of technology.",
+      "problem_solving": "Problem Solving",
+      "problem_solving_desc": "Finding elegant solutions to complex problems through creative thinking and thorough analysis.",
+      "attention_to_detail": "Attention to Detail",
+      "attention_to_detail_desc": "Focusing on the smallest details to ensure high-quality, polished final products.",
+      "collaboration": "Collaboration",
+      "collaboration_desc": "Working effectively with teams to achieve shared goals and create better outcomes."
+    }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "An overview of my technical skills and expertise",
+    "year": "year",
+    "years": "years",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "devops": "DevOps"
+    },
+    "details": {
+      "expertise": "Level of Expertise",
+      "expert": "Expert - Advanced mastery",
+      "advanced": "Advanced - Strong experience",
+      "intermediate": "Intermediate - Good knowledge",
+      "beginner": "Beginner - Basic knowledge"
+    },
+    "techTree": {
+      "title": "Technology Tree"
+    },
+    "learning": {
+      "title": "Currently Learning",
+      "subtitle": "Technologies I'm currently exploring"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of my work",
+    "filters": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile"
+    },
+    "viewDetails": "View Details",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "impact": "Impact",
+    "viewCode": "View Code",
+    "liveSite": "Live Site"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "My professional journey",
+    "present": "Present",
+    "year": "year",
+    "years": "years",
+    "month": "month",
+    "months": "months",
+    "keyAchievements": "Key Achievements"
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic journey",
+    "degrees": [
+      {
+        "degree": "Bachelor's in Software Engineering",
+        "institution": "IUT Douala",
+        "year": "2023"
+      },
+      {
+        "degree": "HND in Industrial Computing",
+        "institution": "EST La SALLE",
+        "year": "2022"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's discuss your project",
+    "getInTouch": "Get in Touch",
+    "sendMessage": "Send a Message",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "socialMedia": "Social Media",
+    "downloadCV": "Download CV",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send",
+      "sending": "Sending...",
+      "successMessage": "Message sent successfully!",
+      "errorMessage": "An error occurred. Please try again."
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageLength": "Message must be at least 20 characters"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Fotso Fotso Mossi Bonito. All rights reserved.",
+    "made_with": "Made with React, TypeScript & Tailwind",
+    "backToTop": "Back to top"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "The page you're looking for doesn't exist",
+    "action": "Go Home"
+  }
+}
