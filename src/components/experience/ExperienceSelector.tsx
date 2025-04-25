@@ -1,17 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useExperience } from '../../context/ExperienceContext';
-import { Settings, Monitor, Beaker, Train, Grid3X3, Code, BriefcaseBusiness, Palette } from 'lucide-react';
-import { cn } from '../../utils/cn';
+import { 
+  Settings, Monitor, Beaker, Train, Grid3X3, Code, Palette, 
+  MousePointer, Cpu, Eye
+} from 'lucide-react';
+
+// Define types for navigation modes and animation levels
+type NavigationMode = 'default' | 'laboratory' | 'journey' | 'isometric';
+type AnimationLevel = 'minimal' | 'medium' | 'full';
+type UserRole = 'developer' | 'designer' | 'recruiter';
 
 const ExperienceSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { 
-    state, 
-    setNavigationMode, 
-    setAnimationLevel, 
-    setUserRole 
-  } = useExperience();
+  const [navigationMode, setNavigationMode] = useState<NavigationMode>('default');
+  const [animationLevel, setAnimationLevel] = useState<AnimationLevel>('medium');
+  const [userRole, setUserRole] = useState<UserRole>('developer');
+  
+  // Apply settings to the document root to enable CSS targeting
+  useEffect(() => {
+    const html = document.documentElement;
+    html.setAttribute('data-navigation', navigationMode);
+    html.setAttribute('data-animation', animationLevel);
+    html.setAttribute('data-role', userRole);
+
+    // Save preferences to localStorage
+    localStorage.setItem('portfolio-preferences', JSON.stringify({
+      navigationMode,
+      animationLevel,
+      userRole
+    }));
+  }, [navigationMode, animationLevel, userRole]);
+
+  // Load saved preferences on initial render
+  useEffect(() => {
+    const savedPrefs = localStorage.getItem('portfolio-preferences');
+    if (savedPrefs) {
+      try {
+        const prefs = JSON.parse(savedPrefs);
+        setNavigationMode(prefs.navigationMode || 'default');
+        setAnimationLevel(prefs.animationLevel || 'medium');
+        setUserRole(prefs.userRole || 'developer');
+      } catch (e) {
+        console.error('Failed to parse saved preferences', e);
+      }
+    }
+  }, []);
   
   return (
     <div className="fixed bottom-6 left-6 z-50">
@@ -32,6 +65,7 @@ const ExperienceSelector = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
           >
             <motion.div
               initial={{ opacity: 0 }}
@@ -54,12 +88,11 @@ const ExperienceSelector = () => {
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => setNavigationMode('default')}
-                      className={cn(
-                        "p-4 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.navigationMode === 'default'
+                      className={`p-4 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        navigationMode === 'default'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Monitor size={24} className="mb-2" />
                       <span className="font-medium">Standard</span>
@@ -70,12 +103,11 @@ const ExperienceSelector = () => {
                     
                     <button
                       onClick={() => setNavigationMode('laboratory')}
-                      className={cn(
-                        "p-4 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.navigationMode === 'laboratory'
+                      className={`p-4 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        navigationMode === 'laboratory'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Beaker size={24} className="mb-2" />
                       <span className="font-medium">Laboratoire</span>
@@ -86,12 +118,11 @@ const ExperienceSelector = () => {
                     
                     <button
                       onClick={() => setNavigationMode('journey')}
-                      className={cn(
-                        "p-4 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.navigationMode === 'journey'
+                      className={`p-4 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        navigationMode === 'journey'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Train size={24} className="mb-2" />
                       <span className="font-medium">Voyage</span>
@@ -102,12 +133,11 @@ const ExperienceSelector = () => {
                     
                     <button
                       onClick={() => setNavigationMode('isometric')}
-                      className={cn(
-                        "p-4 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.navigationMode === 'isometric'
+                      className={`p-4 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        navigationMode === 'isometric'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Grid3X3 size={24} className="mb-2" />
                       <span className="font-medium">Isométrique</span>
@@ -124,37 +154,37 @@ const ExperienceSelector = () => {
                   <div className="grid grid-cols-3 gap-3">
                     <button
                       onClick={() => setAnimationLevel('minimal')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.animationLevel === 'minimal'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        animationLevel === 'minimal'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
+                      <MousePointer size={20} className="mb-2" />
                       <span className="font-medium">Minimal</span>
                     </button>
                     
                     <button
                       onClick={() => setAnimationLevel('medium')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.animationLevel === 'medium'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        animationLevel === 'medium'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
+                      <Cpu size={20} className="mb-2" />
                       <span className="font-medium">Modéré</span>
                     </button>
                     
                     <button
                       onClick={() => setAnimationLevel('full')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.animationLevel === 'full'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        animationLevel === 'full'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
+                      <Eye size={20} className="mb-2" />
                       <span className="font-medium">Complet</span>
                     </button>
                   </div>
@@ -166,12 +196,11 @@ const ExperienceSelector = () => {
                   <div className="grid grid-cols-3 gap-3">
                     <button
                       onClick={() => setUserRole('developer')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.userRole === 'developer'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        userRole === 'developer'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Code size={20} className="mb-1" />
                       <span className="font-medium">Développeur</span>
@@ -179,12 +208,11 @@ const ExperienceSelector = () => {
                     
                     <button
                       onClick={() => setUserRole('designer')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.userRole === 'designer'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        userRole === 'designer'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
                       <Palette size={20} className="mb-1" />
                       <span className="font-medium">Designer</span>
@@ -192,14 +220,13 @@ const ExperienceSelector = () => {
                     
                     <button
                       onClick={() => setUserRole('recruiter')}
-                      className={cn(
-                        "p-3 rounded-lg flex flex-col items-center text-center border transition-all",
-                        state.userRole === 'recruiter'
+                      className={`p-3 rounded-lg flex flex-col items-center text-center border transition-all ${
+                        userRole === 'recruiter'
                           ? "border-primary bg-primary/5 dark:bg-primary/10"
                           : "border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      )}
+                      }`}
                     >
-                      <BriefcaseBusiness size={20} className="mb-1" />
+                      <Palette size={20} className="mb-1" />
                       <span className="font-medium">Recruteur</span>
                     </button>
                   </div>
